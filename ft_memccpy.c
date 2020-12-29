@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 17:24:26 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/28 22:58:50 by juyou            ###   ########.fr       */
+/*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
+/*   Updated: 2020/12/29 19:25:29 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *str, int c)
+void *ft_memccpy(void *restrict dst, const void *restrict src, int c, int n)
 {
-	while (*str != (char)c)
-		if (!*str++)
-			return (NULL);
-	return ((char *)str);
+
 }

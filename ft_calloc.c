@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 17:24:26 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/28 22:58:50 by juyou            ###   ########.fr       */
+/*   Created: 2020/12/28 22:59:41 by juyou             #+#    #+#             */
+/*   Updated: 2020/12/28 23:11:29 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+void 	*ft_calloc(int count, int size)
 {
-	while (*str != (char)c)
-		if (!*str++)
-			return (NULL);
-	return ((char *)str);
+	int *ptr;
+	
+	ptr = (int *)malloc(size * count);
+	ft_bzero(ptr, count);
+	return (ptr);
 }

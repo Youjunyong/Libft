@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 17:24:26 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/28 22:58:50 by juyou            ###   ########.fr       */
+/*   Created: 2020/12/28 23:11:39 by juyou             #+#    #+#             */
+/*   Updated: 2020/12/28 23:17:11 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+int		ft_isprint(char c)
 {
-	while (*str != (char)c)
-		if (!*str++)
-			return (NULL);
-	return ((char *)str);
+	if (' ' <= c && c <= '~')
+		return (1);
+	return (0);
 }

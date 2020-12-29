@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 17:24:26 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/28 22:58:50 by juyou            ###   ########.fr       */
+/*   Created: 2020/12/29 17:55:29 by juyou             #+#    #+#             */
+/*   Updated: 2020/12/29 18:23:38 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+int ft_tolower(int c)
 {
-	while (*str != (char)c)
-		if (!*str++)
-			return (NULL);
-	return ((char *)str);
+	if ((unsigned char)c >= 'A' && (unsigned char)c <= 'Z')
+		return (c + 32);
+	return (c);
 }

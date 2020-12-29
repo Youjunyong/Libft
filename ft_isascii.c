@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 17:24:26 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/28 22:58:50 by juyou            ###   ########.fr       */
+/*   Created: 2020/12/28 23:11:39 by juyou             #+#    #+#             */
+/*   Updated: 2020/12/28 23:16:06 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+int		ft_isascii(char c)
 {
-	while (*str != (char)c)
-		if (!*str++)
-			return (NULL);
-	return ((char *)str);
+	if (0 <= c && c <= 127)
+		return (1);
+	return (0);
 }
