@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/30 18:52:20 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/02 01:56:31 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/02 14:27:51 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n)
+int		ft_strlcpy(char *restrict dst, const char *restrict src, int dstsize)
 {
+	int idx;
 	unsigned char *udst;
 	unsigned char *usrc;
-	unsigned int idx;
 
-	idx = 0;
 	udst = (unsigned char *)dst;
 	usrc = (unsigned char *)src;
-	while (idx < n)
+	idx = 0;
+	while (idx < dstsize - 1 && *usrc && dstsize != 0)
 	{
 		*udst = *usrc;
-		if (*usrc == (unsigned char)c)
-			return (++udst);
-		idx++;
 		udst++;
 		usrc++;
+		idx++;
 	}
-	return (NULL);
+	if (idx < dstsize && dstsize != 0)
+	{
+		*udst = '\0';
+		idx++;
+	}
+	if (ft_strlen(src) > dstsize)
+		return (ft_strlen(src));
+	else
+		return (ft_strlen(src));
 }

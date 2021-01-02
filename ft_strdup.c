@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/30 18:52:20 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/02 01:39:05 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/02 01:55:57 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n)
+char *ft_strdup(const char *s1)
 {
-	unsigned char *udst;
-	unsigned char *usrc;
-	unsigned int idx;
+	char *ptr;
+	int len;
+	int idx;
 
 	idx = 0;
-	udst = (unsigned char *)dst;
-	usrc = (unsigned char *)src;
-	while (idx < n)
+	len = ft_strlen(s1);
+	if (!(ptr = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+
+	while (idx < len)
 	{
-		*udst = *usrc;
-		if (*usrc == (unsigned char)c)
-			return (++udst);
+		*ptr++ = *s1++;
 		idx++;
-		udst++;
-		usrc++;
 	}
-	return (NULL);
+	*ptr = '\0';
+	return (ptr-idx);
 }
+

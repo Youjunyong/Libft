@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/30 18:52:20 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/02 14:31:48 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/02 15:25:59 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char *udst;
-	unsigned char *usrc;
-	unsigned int idx;
+	int idx;
 
-	idx = 0;
-	udst = (unsigned char *)dst;
-	usrc = (unsigned char *)src;
-	while (idx < n)
+	idx = ft_strlen(s);
+	while (idx >= 0)
 	{
-		*udst = *usrc;
-		if (*usrc == (unsigned char)c)
-			return (++udst);
-		idx++;
-		udst++;
-		usrc++;
+		if (s[idx] == c)
+			return ((char *)&s[idx]);
+		idx--;
 	}
 	return (NULL);
 }

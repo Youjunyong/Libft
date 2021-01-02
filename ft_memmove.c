@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/30 18:52:20 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/01 22:49:53 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/02 01:38:48 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n)
+void	*ft_memmove(void *dst, const void *src, unsigned int len)
 {
-	unsigned char *udst;
-	unsigned char *usrc;
-	unsigned int idx;
+	unsigned int	i;
+	unsigned char	*udst;
+	unsigned char	*usrc;
 
-	idx = 0;
+	i = 0;
 	udst = (unsigned char *)dst;
 	usrc = (unsigned char *)src;
-	while (idx < n)
-	{
-		*udst = *usrc;
-		if (*usrc == (unsigned char)c)
-			return (++udst);
-		idx++;
-		udst++;
-		usrc++;
-	}
-	return (NULL);
+	if (usrc < udst)
+		while (len-- > 0)
+			udst[len] = usrc[len];
+	else
+		while (i < len)
+			{
+				udst[i] = usrc[i];
+				i++;
+			}
+	return (udst);
 }

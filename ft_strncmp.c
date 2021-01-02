@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/30 18:52:20 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/02 14:20:09 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/02 14:29:28 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n)
+int		ft_strncmp(const char *s1, const char *s2, int n)
 {
-	unsigned char *udst;
-	unsigned char *usrc;
-	unsigned int idx;
+	unsigned char	*us1;
+	unsigned char	*us2;
 
-	idx = 0;
-	udst = (unsigned char *)dst;
-	usrc = (unsigned char *)src;
-	while (idx < n)
+	us1 = (unsigned char *)s1;
+	us2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while ((*us1 && (*us1 == *us2)) && --n)
 	{
-		*udst = *usrc;
-		if (*usrc == (unsigned char)c)
-			return (++udst);
-		idx++;
-		udst++;
-		usrc++;
+		if (*us1 != *us2)
+			return (*us1 - *us2);
+		us1 += 1;
+		us2 += 1;
 	}
-	return (NULL);
+	return (*us1 - *us2);
 }

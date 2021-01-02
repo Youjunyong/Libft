@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 14:54:15 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/29 19:25:10 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/02 14:59:52 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,14 @@ int		ft_isprint(char c);
 int 	ft_toupper(int c);
 int 	ft_tolower(int c);
 char	*ft_strnstr(const char *haystack, const char *needle, int len);
-void 	*ft_memccpy(void *restrict dst, const void *restrict src, int c, int n);
+void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n);
+void	*ft_memchr(const void *s, int c, unsigned int n);
+int		ft_memcmp(const void *s1, const void *s2, unsigned int n);
+void	*ft_memmove(void *dst, const void *src, unsigned int len);
+char 	*ft_strdup(const char *s1);
+int		ft_strlcpy(char *restrict dst, const char *restrict src, int dstsize);
+int		ft_strncmp(const char *s1, const char *s2, int n);
+char	*ft_strrchr(const char *s, int c);
 
 
 
