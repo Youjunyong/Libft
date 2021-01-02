@@ -6,17 +6,17 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 01:56:31 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/02 14:27:51 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/02 15:56:53 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlcpy(char *restrict dst, const char *restrict src, int dstsize)
+int					ft_strlcpy(char *dst, const char *src, int dstsize)
 {
-	int idx;
-	unsigned char *udst;
-	unsigned char *usrc;
+	int				idx;
+	unsigned char	*udst;
+	unsigned char	*usrc;
 
 	udst = (unsigned char *)dst;
 	usrc = (unsigned char *)src;

@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 22:49:53 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/02 01:38:48 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/02 15:37:47 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	*ft_memmove(void *dst, const void *src, unsigned int len)
 			udst[len] = usrc[len];
 	else
 		while (i < len)
-			{
-				udst[i] = usrc[i];
-				i++;
-			}
+		{
+			udst[i] = usrc[i];
+			i++;
+		}
 	return (udst);
 }

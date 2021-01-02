@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 14:54:15 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/02 14:59:52 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/02 16:10:08 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	*ft_memset(void *b, int c, int len);
 void	*ft_bzero(void *ptr, int size);
 void	*ft_memcpy(void *dst, const void *src, int size);
 int		ft_isalpha(char c);
+void	*ft_memccpy(void *dst, const void *src, int c, int n);
 int		ft_isdigit(char c);
 int		ft_isalnum(char c);
 int		ft_isspace(char c);
 int		ft_atoi(const char *str);
+int		ft_strlcpy(char *dst, const char *src, int dstsize);
 int		ft_strlcat(char *dst, const char *src, int size);
 char 	*ft_strchr(const char *str, int c);
 void 	*ft_calloc(int count, int size);
@@ -34,16 +36,11 @@ int		ft_isprint(char c);
 int 	ft_toupper(int c);
 int 	ft_tolower(int c);
 char	*ft_strnstr(const char *haystack, const char *needle, int len);
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n);
 void	*ft_memchr(const void *s, int c, unsigned int n);
 int		ft_memcmp(const void *s1, const void *s2, unsigned int n);
 void	*ft_memmove(void *dst, const void *src, unsigned int len);
 char 	*ft_strdup(const char *s1);
-int		ft_strlcpy(char *restrict dst, const char *restrict src, int dstsize);
 int		ft_strncmp(const char *s1, const char *s2, int n);
 char	*ft_strrchr(const char *s, int c);
-
-
-
 
 #endif

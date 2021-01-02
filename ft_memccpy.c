@@ -6,17 +6,17 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 19:24:02 by juyou             #+#    #+#             */
-/*   Updated: 2020/12/30 18:52:20 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/02 15:43:44 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	*ft_memccpy(void *dst, const void *src, int c, unsigned int n)
+void				*ft_memccpy(void *dst, const void *src, int c, int n)
 {
-	unsigned char *udst;
-	unsigned char *usrc;
-	unsigned int idx;
+	unsigned char	*udst;
+	unsigned char	*usrc;
+	int				idx;
 
 	idx = 0;
 	udst = (unsigned char *)dst;
