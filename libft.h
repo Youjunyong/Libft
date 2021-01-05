@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 14:54:15 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/02 16:10:08 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/04 17:13:40 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+
+
+
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
 //part1
 int		ft_strlen(const char *str);
@@ -42,5 +51,12 @@ void	*ft_memmove(void *dst, const void *src, unsigned int len);
 char 	*ft_strdup(const char *s1);
 int		ft_strncmp(const char *s1, const char *s2, int n);
 char	*ft_strrchr(const char *s, int c);
+
+
+// //part2
+char 	*ft_strjoin(char const *s1, char const *s2);
+char 	*ft_substr(char const *s, unsigned int start, size_t len);
+char 	*ft_strtrim(char const *s1, char const *set);
+
 
 #endif
