@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:10:52 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/05 12:22:59 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/05 12:31:15 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,14 @@ char        *ft_strtrim(char const *s1, char const *set)
         return (NULL);
     if (!set)
         return (ft_strdup(s1)); 
-		// 만약 set이 공백이라면, 문자열 그대로 리턴
-    start = 0; // 문자열 시작 인덱스
-    end = ft_strlen(s1); // 문자열 마지막 인덱스
+    start = 0;
+    end = ft_strlen(s1);
     while (s1[start] && ft_strchr(set, s1[start]))
 	{
         start++;
-		printf("(start : %s)", ft_strchr(set, s1[start]));//test
 	}
-	printf("\n");
     while (s1[end - 1] && ft_strchr(set, s1[end - 1]))
     {
-		printf("(end : %s)", ft_strchr(set, s1[end -1]));//test
         if (end - 1 < 1)
             break ;
         end--;

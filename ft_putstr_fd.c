@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 11:38:38 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/07 17:48:41 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/07 13:50:25 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/07 13:51:37 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void ft_putnbr_fd(int n, int fd)
+void ft_putstr_fd(char *s, int fd)
 {
-	char *s;
-
-	s = ft_itoa(n);
-	ft_putstr_fd(s, fd);
-}
-int main(void)
-{
-	int nb = 12345;
-
-	ft_putnbr_fd(nb, 1);
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

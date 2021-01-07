@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 11:38:38 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/07 17:48:41 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/07 13:54:56 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/07 16:48:20 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void ft_putnbr_fd(int n, int fd)
+void 	ft_putendl_fd(char *s, int fd)
 {
-	char *s;
-
-	s = ft_itoa(n);
-	ft_putstr_fd(s, fd);
+	if (s)
+		ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }
-int main(void)
-{
-	int nb = 12345;
 
-	ft_putnbr_fd(nb, 1);
-}
+// void	ft_putendl_fd(char *s, int fd)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	if (s)
+// 		while (s[i])
+// 			write(fd, &s[i++], 1);
+// 	write(fd, "\n", 1);
+// }
