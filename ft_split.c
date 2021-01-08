@@ -5,49 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 21:58:18 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/07 13:46:59 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/08 16:45:19 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/08 17:09:48 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-static int	get_str_cnt(const char *str, int c)
+static int	get_strs_cnt(const char *str, int c)
 {
-	int idx;
-	int cnt;
+	unsigned int idx;
+	unsigned int cnt;
+	int flag;
 
 	cnt = 0;
 	idx = 0;
+	flag = 1;
+	while (str[idx] && str[idx] == (char)c)
+		idx++;
 	while (str[idx])
 	{
 		if (str[idx] == (char)c)
-			cnt++;
+			flag = 1;
+		else
+			if (flag == 1)
+			{
+				cnt++;
+				flag = 0;
+			}
 		idx++;
 	}
 	return (cnt);
 }
 
-static int	*serch_delimiter(const char *str, int c)
+static int	*get_strs_index(const char *str, int c)
 {
-	int *delimiter;
 	int idx;
 	int jdx;
+	int flag;
+	int *strs_index;
 	
-	jdx = 0;
-	idx = 0;
-	if(!(delimiter = (int *)malloc(sizeof(int) * get_str_cnt(str, c))))
+	if (!(strs_index = (int *)malloc(sizeof(int) * 2 * get_strs_cnt(str, c))))
 		return (NULL);
+	flag = 1;
+	idx = 0;
+	jdx = 0;
+	while (str[idx] && str[idx] == (char)c)
+		idx++;
 	while (str[idx])
 	{
-		if (str[idx] == (char)c)
+		if (str[idx] != (char)c && flag == 1)
 		{
-			delimiter[jdx++] = idx;
-			// printf("delimiter : %d\n",idx);
+			strs_index[jdx++] = idx;
+			flag = 0;
+		}
+		else if (str[idx] == (char)c && flag == 0)
+		{
+			strs_index[jdx++] = idx - 1;
+			flag = 1;
 		}
 		idx++;
 	}
-	return (delimiter);
+	strs_index[jdx] = ft_strlen(str) - 1;
+	return (strs_index);
 }
 static char *str_slicing(char const *str, int start, int end)
 {
@@ -55,7 +76,8 @@ static char *str_slicing(char const *str, int start, int end)
 	int idx;
 	int jdx;
 
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!(ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
+		return (NULL);
 	jdx = 0;
 	idx = 0;
 	while (str[idx])
@@ -72,40 +94,31 @@ char **ft_split(char const *s, char c)
 {
 	char **tab;
 	char *str_peice;
-	int *delimiter;
-	int start;
-	int end;
-	int num;
+	int *strs_index;
+	int strs_cnt;
 	int idx;
+	int jdx;
 	
+	jdx = 0;
 	idx = 0;
-	num = get_str_cnt(s, c);
-	delimiter = serch_delimiter(s, c);
-	if (!s || !(tab = (char **)malloc(sizeof(char *) * (num + 1))))
+	if (!s)
 		return (NULL);
-	str_peice = str_slicing(s, 0, delimiter[0]-1);
-	tab[0] = (char *)malloc(sizeof(char) * (delimiter[0] + 1));
-	tab[0] = str_peice;
-	// printf("first : (%s)\n",str_peice);
-	while (idx < num )
+	if (!c)
+		return (NULL);
+	strs_cnt = get_strs_cnt(s, c);
+	strs_index = get_strs_index(s, c);
+	if (!(tab = (char **)malloc(sizeof(char *) * (strs_cnt + 1))))
+		return (NULL);
+
+	while (idx < strs_cnt)
 	{
-		// printf("idx:%d\n",idx);
-		if (idx == num - 1)
-		{
-			str_peice = str_slicing(s, delimiter[idx] + 1, ft_strlen(s)+1);
-			tab[idx+1] = (char *)malloc(sizeof(char) * (end - start));
-			tab[idx+1] = str_peice;
-			// printf("last : (%s)\n",str_peice);
-			break;
-		}
-		start = delimiter[idx] + 1;
-		end = delimiter[idx + 1] - 1;
-		str_peice = str_slicing(s, start, end);
-		// printf("in loop idx : %d ,(%d:%d) : %s\n",idx,start,end,str_peice);
-		tab[idx+1] = (char *)malloc(sizeof(char) * (end - start));
-		tab[idx+1] = str_peice;
+		str_peice = str_slicing(s, strs_index[jdx], strs_index[jdx + 1]);
+		tab[idx] = (char *)malloc(sizeof(char) * ft_strlen(str_peice));
+		tab[idx] = str_peice;
+		jdx += 2;
 		idx++;
 	}
-	tab[num] = NULL;
+
+	tab[strs_cnt] = NULL;
 	return (tab);
 }
