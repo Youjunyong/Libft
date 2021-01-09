@@ -6,12 +6,25 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 16:45:19 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/08 17:09:48 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/09 19:37:52 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+
+static char			**malloc_error(char **tab)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (NULL);
+}
 
 static int	get_strs_cnt(const char *str, int c)
 {
@@ -28,12 +41,11 @@ static int	get_strs_cnt(const char *str, int c)
 	{
 		if (str[idx] == (char)c)
 			flag = 1;
-		else
-			if (flag == 1)
-			{
-				cnt++;
-				flag = 0;
-			}
+		else if (str[idx] != (char)c && flag == 1)
+		{
+			cnt++;
+			flag = 0;
+		}
 		idx++;
 	}
 	return (cnt);
@@ -70,6 +82,7 @@ static int	*get_strs_index(const char *str, int c)
 	strs_index[jdx] = ft_strlen(str) - 1;
 	return (strs_index);
 }
+
 static char *str_slicing(char const *str, int start, int end)
 {
 	char *ret;
@@ -89,7 +102,6 @@ static char *str_slicing(char const *str, int start, int end)
 	ret[jdx] = '\0';
 	return (ret);
 }
-
 char **ft_split(char const *s, char c)
 {
 	char **tab;
@@ -103,22 +115,19 @@ char **ft_split(char const *s, char c)
 	idx = 0;
 	if (!s)
 		return (NULL);
-	if (!c)
-		return (NULL);
 	strs_cnt = get_strs_cnt(s, c);
 	strs_index = get_strs_index(s, c);
 	if (!(tab = (char **)malloc(sizeof(char *) * (strs_cnt + 1))))
 		return (NULL);
-
 	while (idx < strs_cnt)
 	{
 		str_peice = str_slicing(s, strs_index[jdx], strs_index[jdx + 1]);
-		tab[idx] = (char *)malloc(sizeof(char) * ft_strlen(str_peice));
+		if (!(tab[idx] = (char *)malloc(sizeof(char) * (ft_strlen(str_peice) + 1))))
+			return (malloc_error(tab));
 		tab[idx] = str_peice;
 		jdx += 2;
 		idx++;
 	}
-
 	tab[strs_cnt] = NULL;
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 14:54:15 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/08 16:47:06 by juyou            ###   ########.fr       */
+/*   Updated: 2021/01/09 19:28:00 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-
-
 
 typedef struct		s_list
 {
