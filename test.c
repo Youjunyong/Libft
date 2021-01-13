@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 15:43:31 by juyou             #+#    #+#             */
-/*   Updated: 2021/01/13 14:17:08 by juyou            ###   ########.fr       */
+/*   Created: 2021/01/10 15:06:50 by juyou             #+#    #+#             */
+/*   Updated: 2021/01/10 15:09:51 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, int size)
+#include <stdlib.h>
+
+typedef struct		s_list
 {
-	unsigned char *udst;
-	unsigned char *usrc;
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
-	if (!dst && !src)
-		return (0);
-	udst = (unsigned char *)dst;
-	usrc = (unsigned char *)src;
-	while (size-- > 0)
-		*udst++ = *usrc++;
-	return (dst);
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
